@@ -13,10 +13,10 @@
 #include <stddef.h> // size_t
 #include <string.h> // memcpy
 
+#ifdef DOXYGEN
 // For documentation only
 typedef void *T;
 
-#ifdef DOXYGEN
 /// @short Swap two addressable objects. Implemented as a macro.
 /// @param left object to swap
 /// @param right object to swap
