@@ -13,7 +13,9 @@
 #include <stddef.h> // size_t
 #include <string.h> // memcpy
 
+// Expose the macro as a pseudo-function to doxygen
 #ifdef DOXYGEN
+
 // For documentation only
 typedef void *T;
 
@@ -21,13 +23,14 @@ typedef void *T;
 /// @param left object to swap
 /// @param right object to swap
 void swap(T left, T right);
+
 #else
 
 // Worker inline function.
 // Inlines to register operations if optimization is enabled.
 static inline
-void swap(void * left, void * right,
-          void * restrict left_temp, void * restrict right_temp,
+void swap(void *left, void *right,
+          void *restrict left_temp, void *restrict right_temp,
           size_t size) {
     // Read - modify - write paradigm. No modifications here, though.
     memcpy(left_temp, left, size);
@@ -35,7 +38,9 @@ void swap(void * left, void * right,
     memcpy(right, left_temp, size);
     memcpy(left, right_temp, size);
 }
+
 #endif
+
 
 // Caller macro. The ternary expressions ensure that the types
 // are cross-assignable, and sizeof in array initializers
